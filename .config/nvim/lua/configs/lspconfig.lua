@@ -86,6 +86,6 @@ local servers = {
   "cssls",
   "basedpyright",
   "ts_ls",
-  "eslint_d",
+  "eslint",
 }
 vim.lsp.enable(servers)
