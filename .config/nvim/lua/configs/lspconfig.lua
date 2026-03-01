@@ -87,5 +87,6 @@ local servers = {
   "basedpyright",
   "ts_ls",
   "eslint",
+  "astro"
 }
 vim.lsp.enable(servers)
