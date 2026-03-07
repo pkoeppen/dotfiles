@@ -3,6 +3,7 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 alias vi='nvim'
 alias vim='nvim'
+alias cursor='agent'
 
 function colorize() {
   local branch="$1"
