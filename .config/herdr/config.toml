@@ -1,0 +1,8 @@
+[keys]
+previous_workspace = "prefix+shift+k"
+next_workspace = "prefix+shift+j"
+last_pane = "prefix+backslash"
+
+[keys.indexed]
+workspaces = "ctrl+alt"
+agents = "ctrl+shift"
