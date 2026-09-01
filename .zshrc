@@ -4,6 +4,7 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 alias vi='nvim'
 alias vim='nvim'
 alias cursor='agent'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 function colorize() {
   local branch="$1"
@@ -25,10 +26,11 @@ function git_branch() {
     echo "%F{blue}git:(%f%F{10}$(colorize "$branch")%f%F{blue})%f "
   fi
 }
-
 setopt prompt_subst
 prompt='%~/ $(git_branch)%# '
 
 autoload -Uz compinit && compinit
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+. "$HOME/.local/bin/env"
+
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
