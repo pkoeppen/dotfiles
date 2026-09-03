@@ -26,10 +26,23 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
+-- HTTP Archive files are plain JSON
+vim.filetype.add {
+  extension = {
+    har = "json",
+  },
+}
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
-  callback = function()
-    pcall(vim.treesitter.start)
+  callback = function(args)
+    if pcall(vim.treesitter.start, args.buf) then
+      -- treesitter folding, only for buffers that have a parser
+      for _, win in ipairs(vim.fn.win_findbuf(args.buf)) do
+        vim.wo[win][0].foldmethod = "expr"
+        vim.wo[win][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      end
+    end
   end,
 })
 

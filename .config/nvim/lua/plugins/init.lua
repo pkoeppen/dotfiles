@@ -184,8 +184,13 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate | TSInstallAll",
-    opts = function()
-      return require "configs.treesitter"
+    -- must be a table (not a function): :TSInstallAll reads spec.opts.ensure_installed
+    opts = require "configs.treesitter",
+    config = function(_, opts)
+      local ts = require "nvim-treesitter"
+      ts.setup(opts)
+      -- async; no-op for parsers that are already installed
+      ts.install(opts.ensure_installed)
     end,
   },
 

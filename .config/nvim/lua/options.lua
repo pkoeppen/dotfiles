@@ -82,6 +82,10 @@ vim.opt.expandtab = true
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
+-- Folding: foldmethod/foldexpr are set per buffer in autocmds.lua (treesitter);
+-- start with everything unfolded
+vim.opt.foldlevelstart = 99
+
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
