@@ -17,3 +17,11 @@ size = 12.5
 style.blinking = 'Always'
 blink_interval = 200
 blink_timeout = 0
+
+[keyboard]
+
+# Send Ctrl-i as its CSI u sequence (what the kitty keyboard protocol would send)
+# so tmux/nvim can tell it apart from Tab, which is the same byte otherwise.
+bindings = [
+  { key = "I", mods = "Control", mode = "~Vi|~Search", chars = "\u001b[105;5u" },
+]

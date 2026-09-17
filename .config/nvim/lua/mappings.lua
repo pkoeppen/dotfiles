@@ -36,6 +36,12 @@ map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic locli
 if require("nvconfig").ui.tabufline.enabled then
   map("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
 
+  -- <Tab> and <C-i> are the same byte in a plain terminal, so the <tab> mapping
+  -- below would also swallow <C-i>. When the terminal reports <C-i> distinctly
+  -- (Alacritty Ctrl-i binding + tmux `extended-keys on`), this keeps it as
+  -- jumplist-forward instead of "next buffer".
+  map("n", "<C-i>", "<C-i>", { desc = "jump forward in jumplist" })
+
   map("n", "<tab>", function()
     require("nvchad.tabufline").next()
   end, { desc = "buffer goto next" })

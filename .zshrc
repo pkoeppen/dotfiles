@@ -31,3 +31,12 @@ autoload -Uz compinit && compinit
 . "$HOME/.local/bin/env"
 
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# opencode
+export PATH=/Users/pkoeppen/.opencode/bin:$PATH
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
