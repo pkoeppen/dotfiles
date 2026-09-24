@@ -33,9 +33,9 @@ M.on_init = function(client, _)
   end
 end
 
-capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
-capabilities.textDocument.completion.completionItem = {
+M.capabilities.textDocument.completion.completionItem = {
   documentationFormat = { "markdown", "plaintext" },
   snippetSupport = true,
   preselectSupport = true,
@@ -88,6 +88,7 @@ local servers = {
   "ts_ls",
   "eslint",
   "astro",
-  "clangd"
+  "clangd",
+  "zls",
 }
 vim.lsp.enable(servers)
